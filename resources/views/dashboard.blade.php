@@ -46,25 +46,25 @@
                     
                     <!-- component -->
 
-                    <div class=""
-                        <form class="w-full max-w-lg" metod='POST' enctype="multipart/form-data">
+                    
+                        <form class="w-full" action='{{ route('applications.store') }}' method='POST' enctype='multipart/form-data'>
                             @csrf
                             <div class="flex flex-wrap -mx-3 mb-6">
                             <div class="w-full px-3">
-                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                                <label class="block uppercase tracking-wide text-gray-700 text-lg font-bold mb-2 text-center" for="grid-password">
                                 Subject
                                 </label>
-                                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="nick" type="text">
+                                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="subject" required id="nick" type="text">
                                 <p class="text-gray-600 text-xs italic">Remove if not needed</p>
                             </div>
                             </div>
                             
                             <div class="flex flex-wrap -mx-3 mb-6">
                             <div class="w-full px-3">
-                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                                <label class="block uppercase tracking-wide text-gray-700 text-lg font-bold mb-2 text-center" for="grid-password">
                                 Message
                                 </label>
-                                <textarea class=" no-resize appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none" id="message"></textarea>
+                                <textarea class=" no-resize appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none" required name="message" id="message"></textarea>
                                 <p class="text-gray-600 text-xs italic">Re-size can be disabled by set by resize-none / resize-y / resize-x / resize</p>
                             </div>                            
                             </div>
@@ -73,16 +73,11 @@
                                <input type="file" name="file" id="">
                             </div>                            
                             </div>
-                            <div class="md:flex md:items-center">
-                            <div class="md:w-1/3">
-                                <button class="shadow bg-teal-400 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
-                                Send
-                                </button>
+                            <div class="md:flex md:items-center"> 
                             </div>
-                            <div class="md:w-2/3"></div>
-                            </div>
+                            <button class="bg-gray-500 hover:bg-gray-600 text-white font-bold w-full py-5 text-2xl" type="submit">Send</button>
                         </form>
-                    </div>
+                    
                     @endif
                     
                 </div>
