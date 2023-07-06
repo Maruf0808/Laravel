@@ -10,6 +10,13 @@ class ApplicationController extends Controller
     public function store(Request $request)
     {
         if ($request->hasFile('file')){
+
+            $request->validate([
+                'subject' => 'required|max:255',
+                'message' => 'required',
+                'file' => 'file|mimes:png,jpg,pdf'    
+            ]);
+
             $name = $request->file('file')->getClientOriginalName();
             $path = $request->file('file')->storeAs(
                 'files',
@@ -17,6 +24,7 @@ class ApplicationController extends Controller
                 'public'
             );
         }
+
         
         Application::create([
             'user_id' => auth()->user()->id,
