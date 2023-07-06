@@ -9,14 +9,13 @@ class ApplicationController extends Controller
 {
     public function store(Request $request)
     {
+        $request->validate([
+            'subject' => 'required|max:255',
+            'message' => 'required',
+            'file' => 'file|mimes:png,jpg,pdf'    
+        ]);
+        
         if ($request->hasFile('file')){
-
-            $request->validate([
-                'subject' => 'required|max:255',
-                'message' => 'required',
-                'file' => 'file|mimes:png,jpg,pdf'    
-            ]);
-
             $name = $request->file('file')->getClientOriginalName();
             $path = $request->file('file')->storeAs(
                 'files',
@@ -33,6 +32,9 @@ class ApplicationController extends Controller
             'file_url' => $path ?? null,
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with([
+            'message' => 'Application created',
+            'type' => 'red'
+        ]);
     }
 }

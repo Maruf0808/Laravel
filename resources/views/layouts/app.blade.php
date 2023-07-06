@@ -15,6 +15,11 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
+        @if (session('message'))
+            <div class="bg-{{ session('type') }}-500 text-white p-4">
+                {{ session('message') }}
+            </div>
+        @endif
         <div class="min-h-screen bg-gray-100">
             @include('layouts.navigation')
 
